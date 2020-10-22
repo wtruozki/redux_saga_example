@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+}
+
+.name {
+  margin: auto 0;
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
