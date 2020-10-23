@@ -1,9 +1,14 @@
 import App from "./presentaion"
 import {connect} from 'react-redux';
-import {getUsersRequest} from '../../store/users/action';
+import {getUsersRequest, usersError} from '../../store/users/action';
 
 const mapStateToProps = (state) =>({users: state.users})
-const mapDispatchToProps = (dispatch) => dispatch(getUsersRequest())
+const mapDispatchToProps = (dispatch) =>({
+  getUsers:() => dispatch(getUsersRequest()),
+  usersError:(error) => dispatch(usersError(error))
+})
+
+
 
 export default connect(
   mapStateToProps,

@@ -1,5 +1,5 @@
 import {takeEvery,takeLatest,call, put, fork,take} from 'redux-saga/effects';
-import {GET_USERS_REQUEST, DELETE_USER_REQUEST,CREATE_USER_REQUEST,getUsersSuccess} from "./action"
+import {GET_USERS_REQUEST, DELETE_USER_REQUEST,CREATE_USER_REQUEST,getUsersSuccess, usersError} from "./action"
 
 import * as api from '../../api/users';
 
@@ -11,7 +11,9 @@ function* getUsers(){
 			items: result.data.data
 		}));
 	}catch(e){
-
+    yield put(usersError({
+      error: "ユーザー情報の取得ができませんでした。"
+    }));
 	}
 }
 
@@ -25,8 +27,10 @@ function* deleteUser(userId){
       yield call(api.deleteUser, userId);
       yield call(getUsers);
   }catch(e){
-      console.log("miss");
-}
+    yield put(usersError({
+      error: "ユーザーを削除できませんでした"
+    }));
+  }
 }
 
 function* watchDeleteUserRequest(){
@@ -45,7 +49,9 @@ function* createUser({payload}){
       });
       yield call(getUsers);
   }catch(e){
-
+    yield put(usersError({
+      error: "ユーザー作成に失敗しました。"
+    }));
   }
 }
 
