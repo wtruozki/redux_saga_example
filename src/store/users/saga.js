@@ -1,6 +1,6 @@
 import {takeEvery,takeLatest,call, put, fork,take} from 'redux-saga/effects';
-import {GET_USERS_REQUEST, DELETE_USER_REQUEST,CREATE_USER_REQUEST,getUsersSuccess, usersError} from "./action"
-
+import {GET_USERS_REQUEST, DELETE_USER_REQUEST,CREATE_USER_REQUEST} from "./types"
+import {getUsersSuccess, usersError} from "./action"
 import * as api from '../../api/users';
 
 

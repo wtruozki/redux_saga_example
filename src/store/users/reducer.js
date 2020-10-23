@@ -1,4 +1,4 @@
-import { GET_USERS_SUCCESS, USERS_ERROR} from "./action"
+import { GET_USERS_SUCCESS, USERS_ERROR} from "./types"
 
 const init = {
   items: [],
